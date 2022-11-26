@@ -1,0 +1,18 @@
+name: Check Merge Safety
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ExpediaGroup/github-helpers@check-merge-safety
+        with:
+          helper: check-merge-safety
+          base: ${{ github.event.pull_request.head.ref }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
