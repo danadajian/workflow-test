@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Merge Safety
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
