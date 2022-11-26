@@ -15,4 +15,6 @@ jobs:
         with:
           helper: check-merge-safety
           base: ${{ github.event.pull_request.head.ref }}
+          override_filter_globs: |
+            package.json
           github_token: ${{ secrets.GITHUB_TOKEN }}
