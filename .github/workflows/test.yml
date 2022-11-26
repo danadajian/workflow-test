@@ -16,7 +16,6 @@ jobs:
       - uses: ExpediaGroup/github-helpers@check-merge-safety
         with:
           helper: check-merge-safety
-          base: ${{ github.event.pull_request.head.ref }}
           paths: |
             packages/package-a
             packages/package-b
