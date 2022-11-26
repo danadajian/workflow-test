@@ -1,11 +1,14 @@
 name: Check Merge Safety
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
 jobs:
   test:
+    name: Merge Safety
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -14,7 +17,6 @@ jobs:
       - uses: ExpediaGroup/github-helpers@check-merge-safety
         with:
           helper: check-merge-safety
-          base: ${{ github.event.pull_request.head.ref }}
           paths: |
             packages/package-a
             packages/package-b
