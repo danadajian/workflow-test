@@ -1,3 +1,3 @@
-export const hi = 'hi';
+export const hi = 'hi-there';
 
 // test change
