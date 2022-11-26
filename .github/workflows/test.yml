@@ -11,9 +11,6 @@ jobs:
     name: Merge Safety
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - uses: ExpediaGroup/github-helpers@check-merge-safety
         with:
           helper: check-merge-safety
