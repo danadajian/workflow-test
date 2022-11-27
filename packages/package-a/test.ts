@@ -1,3 +1,3 @@
 export const test = 'test';
 
-// test something
+// test something else
