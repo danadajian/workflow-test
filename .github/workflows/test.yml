@@ -26,7 +26,7 @@ jobs:
 
       - name: Get Changed Projects
         id: changed-projects
-        run: echo "::set-output name=CHANGED_PROJECTS::$(pnpm nx print-affected | jq '.projects[]')"
+        run: echo "::set-output name=CHANGED_PROJECTS::$(pnpm nx print-affected | jq '.projectGraph.nodes[]')"
 
       - run: echo "${{ steps.changed-projects.outputs.CHANGED_PROJECTS }}"
 
