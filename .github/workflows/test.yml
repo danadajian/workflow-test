@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: nrwl/nx-set-shas@v3
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -24,8 +28,10 @@ jobs:
         with:
           helper: check-merge-safety
           paths: |
-            packages/package-a
-            packages/package-b
+            package-a
+            package-b
+            package-c
           override_filter_paths: |
             package.json
+            pnpm-lock.yaml
           github_token: ${{ secrets.GITHUB_TOKEN }}
