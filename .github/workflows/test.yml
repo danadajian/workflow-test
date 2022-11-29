@@ -11,6 +11,15 @@ jobs:
     name: Merge Safety
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: actions/setup-pnpm@v2
+        run_install: true
+        with:
+          version: 7.9.0
+
       - uses: ExpediaGroup/github-helpers@simplify-check-merge-safety
         with:
           helper: check-merge-safety
