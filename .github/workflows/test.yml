@@ -16,8 +16,8 @@ jobs:
 
       - name: Setup pnpm
         uses: actions/setup-pnpm@v2
-        run_install: true
         with:
+          run_install: true
           version: 7.9.0
 
       - uses: ExpediaGroup/github-helpers@simplify-check-merge-safety
