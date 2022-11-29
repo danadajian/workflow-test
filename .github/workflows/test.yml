@@ -11,7 +11,7 @@ jobs:
     name: Merge Safety
     runs-on: ubuntu-latest
     steps:
-      - uses: ExpediaGroup/github-helpers@check-merge-safety
+      - uses: ExpediaGroup/github-helpers@v1
         with:
           helper: check-merge-safety
           paths: |
