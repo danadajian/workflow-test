@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-#        with:
-#          fetch-depth: 0
+        with:
+          fetch-depth: 0
 
-#      - uses: nrwl/nx-set-shas@v3
+      - uses: nrwl/nx-set-shas@v3
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
