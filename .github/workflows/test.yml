@@ -20,12 +20,15 @@ jobs:
           run_install: true
           version: 7.9.0
 
+      - name: Get Changed Projects
+        id: changed-projects
+        run: echo "::set-output name=CHANGED_PROJECTS::$(nx print-affected | jq '.projects[]')"
+
       - uses: ExpediaGroup/github-helpers@simplify-check-merge-safety
         with:
           helper: check-merge-safety
-          paths: |
-            packages/package-a
-            packages/package-b
+          paths: ${{ steps.changed-projects.outputs.CHANGED_PROJECTS }}
           override_filter_paths: |
             package.json
+            pnpm-lock.yaml
           github_token: ${{ secrets.GITHUB_TOKEN }}
