@@ -1,1 +1,1 @@
-export const hello = 'hello';
+export const packageCThing = 'package-c';
