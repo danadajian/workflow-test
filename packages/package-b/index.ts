@@ -1,4 +1,1 @@
-export const bye = 'bye';
-
-// test change
-// another change
+export const packageBThing = 'package-b';

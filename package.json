@@ -1,6 +1,10 @@
 {
   "name": "workflow-test",
-  "version": "1.0.4",
   "dependencies": {
+    "nx": "15.2.1",
+    "package-a": "workspace:*",
+    "package-b": "workspace:*",
+    "package-c": "workspace:*",
+    "typescript": "4.9.3"
   }
 }

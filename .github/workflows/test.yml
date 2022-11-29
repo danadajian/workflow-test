@@ -3,7 +3,7 @@ name: Check Merge Safety
 on:
   push:
     branches: [ main ]
-  pull_request_target:
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -11,12 +11,27 @@ jobs:
     name: Merge Safety
     runs-on: ubuntu-latest
     steps:
-      - uses: ExpediaGroup/github-helpers@check-merge-safety
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: nrwl/nx-set-shas@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: true
+          version: 7.9.0
+
+      - uses: ExpediaGroup/github-helpers@simplify-check-merge-safety
         with:
           helper: check-merge-safety
           paths: |
-            packages/package-a
-            packages/package-b
+            package-a
+            package-b
+            package-c
           override_filter_paths: |
             package.json
+            pnpm-lock.yaml
           github_token: ${{ secrets.GITHUB_TOKEN }}
