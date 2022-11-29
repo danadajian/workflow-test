@@ -24,6 +24,8 @@ jobs:
         id: changed-projects
         run: echo "::set-output name=CHANGED_PROJECTS::$(nx print-affected | jq '.projects[]')"
 
+      - run: echo "${{ steps.changed-projects.outputs.CHANGED_PROJECTS }}"
+
       - uses: ExpediaGroup/github-helpers@simplify-check-merge-safety
         with:
           helper: check-merge-safety
