@@ -22,7 +22,7 @@ jobs:
 
       - name: Get all packages
         id: paths
-        run: echo "::set-output name=PACKAGE_FILE_PATHS::$(nx print-affected | jq '.projectGraph.nodes[]' | paste -sd, -)"
+        run: echo "::set-output name=PACKAGE_FILE_PATHS::$(nx print-affected | jq -r '.projectGraph.nodes[]' | paste -sd, -)"
 
       - uses: ExpediaGroup/github-helpers@v1
         with:
