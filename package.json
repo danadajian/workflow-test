@@ -6,5 +6,8 @@
     "package-b": "workspace:*",
     "package-c": "workspace:*",
     "typescript": "4.9.3"
+  },
+  "scripts": {
+    "test": "echo test"
   }
 }

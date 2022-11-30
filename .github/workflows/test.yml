@@ -3,7 +3,7 @@ name: Check Merge Safety
 on:
   push:
     branches: [ main ]
-  pull_request:
+  pull_request_target:
     branches: [ main ]
 
 jobs:
@@ -24,13 +24,14 @@ jobs:
           run_install: true
           version: 7.9.0
 
-      - uses: ExpediaGroup/github-helpers@simplify-check-merge-safety
+      - name: Get all packages
+        id: paths
+        run: echo "::set-output name=PACKAGE_FILE_PATHS::$(pnpm nx print-affected | jq -r '.projectGraph.nodes[]' | paste -sd, -)"
+
+      - uses: ExpediaGroup/github-helpers@v1
         with:
           helper: check-merge-safety
-          paths: |
-            package-a
-            package-b
-            package-c
+          paths: ${{ steps.paths.outputs.PACKAGE_FILE_PATHS }}
           override_filter_paths: |
             package.json
             pnpm-lock.yaml
