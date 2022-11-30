@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: nrwl/nx-set-shas@v3
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -22,7 +26,7 @@ jobs:
 
       - name: Get all packages
         id: paths
-        run: echo "::set-output name=PACKAGE_FILE_PATHS::$(nx print-affected | jq -r '.projectGraph.nodes[]' | paste -sd, -)"
+        run: echo "::set-output name=PACKAGE_FILE_PATHS::$(pnpm nx print-affected | jq -r '.projectGraph.nodes[]' | paste -sd, -)"
 
       - uses: ExpediaGroup/github-helpers@v1
         with:
