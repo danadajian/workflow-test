@@ -11,27 +11,28 @@ jobs:
     name: Merge Safety
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - uses: nrwl/nx-set-shas@v3
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          run_install: true
-          version: 7.9.0
-
-      - name: Get all packages
-        id: paths
-        run: echo "::set-output name=PACKAGE_FILE_PATHS::$(pnpm nx print-affected | jq -r '.projectGraph.nodes[]' | paste -sd, -)"
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0
+#
+#      - uses: nrwl/nx-set-shas@v3
+#
+#      - name: Setup pnpm
+#        uses: pnpm/action-setup@v2
+#        with:
+#          run_install: true
+#          version: 7.9.0
+#
+#      - name: Get all packages
+#        id: paths
+#        run: echo "::set-output name=PACKAGE_FILE_PATHS::$(pnpm nx print-affected | jq -r '.projectGraph.nodes[]' | paste -sd, -)"
 
       - uses: ExpediaGroup/github-helpers@v1
         with:
           helper: check-merge-safety
-          paths: ${{ steps.paths.outputs.PACKAGE_FILE_PATHS }}
+#          paths: ${{ steps.paths.outputs.PACKAGE_FILE_PATHS }}
+          paths: package-a,package-b,package-c
           override_filter_paths: |
             package.json
             pnpm-lock.yaml

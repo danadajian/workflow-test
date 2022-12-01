@@ -8,6 +8,6 @@
     "typescript": "4.9.3"
   },
   "scripts": {
-    "test": "echo test"
+    "test": "echo test1"
   }
 }
