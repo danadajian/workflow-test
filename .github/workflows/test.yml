@@ -28,7 +28,7 @@ jobs:
 #        id: paths
 #        run: echo "::set-output name=PACKAGE_FILE_PATHS::$(pnpm nx print-affected | jq -r '.projectGraph.nodes[]' | paste -sd, -)"
 
-      - uses: ExpediaGroup/github-helpers@support-context
+      - uses: ExpediaGroup/github-helpers@v1
         with:
           helper: check-merge-safety
 #          paths: ${{ steps.paths.outputs.PACKAGE_FILE_PATHS }}
